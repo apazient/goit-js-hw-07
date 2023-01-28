@@ -6,7 +6,7 @@ const galleryContainer = document.querySelector(`.gallery`);
 const galleryMarktUp = createGalleryCard(galleryItems);
 
 galleryContainer.insertAdjacentHTML(`beforeend`, galleryMarktUp);
-galleryContainer.addEventListener(`mousedown`, onImgClick);
+galleryContainer.addEventListener(`mousdown`, onImgClick);
 
 
 function createGalleryCard(galleryItems) {
@@ -17,20 +17,15 @@ function createGalleryCard(galleryItems) {
   }).join(``);
 }
 
-function onImgClick(event) {
-     if (event.target.nodeName !== `IMG`) {
-        return;
-    }
+ function onImgClick(event) {
+//      if (event.target.nodeName !== `IMG`) {
+//         return;
+//     }
     
     //cancels img download
-    event.preventDefault(); 
-
-  new SimpleLightbox('.gallery a', {
-        captions: true,   
+    event.preventDefault();    
+ }
+ const simpleLightbox= new SimpleLightbox('.gallery a', {    
         captionsData: `alt`,
-        captionPosition: 'bottom',
-        captionDelay: 250,
-   
+        captionDelay: 250,   
     });
- 
-}

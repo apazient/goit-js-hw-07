@@ -3,7 +3,7 @@ import { galleryItems } from './gallery-items.js';
 const galleryContainer = document.querySelector(`.gallery`);
 
 const galleryMarktUp = createGalleryCard(galleryItems);
-
+let instance;
 galleryContainer.insertAdjacentHTML(`beforeend`, galleryMarktUp);
 galleryContainer.addEventListener(`click`, onImgClick);
 
@@ -33,10 +33,15 @@ function onImgClick(event) {
     event.preventDefault();     
    
      //create modal popup
-    const instance = basicLightbox.create(`<img src="${event.target.dataset.source}" width="1280">`);
+     instance= basicLightbox.create(`<img src="${event.target.dataset.source}" width="1280">`);
     instance.show()
 }
-  
+window.addEventListener(`keyup`, event => {
+  console.log(event)
+  if (event.code === "Escape") {
+    instance.close()
+  }
+  })
 
 
 
